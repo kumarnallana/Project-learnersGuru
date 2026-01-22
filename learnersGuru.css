@@ -1,0 +1,357 @@
+/* --- VARIABLES --- */
+:root {
+  --navy: #0f172a;
+  --navy-light: #1e293b;
+  --orange: #f97316;
+  --orange-hover: #ea580c;
+  --slate: #64748b;
+  --light-bg: #f8fafc;
+  --white: #ffffff;
+  --border: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* --- RESET --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--light-bg);
+  color: var(--navy);
+  line-height: 1.6;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul {
+  list-style: none;
+}
+
+/* --- LAYOUT UTILITIES --- */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.section {
+  padding: 80px 0;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 16px 0;
+}
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo {
+  height: 48px;
+  width: auto;
+}
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+.company {
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--navy);
+  letter-spacing: -0.5px;
+}
+.tagline {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 2.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+.nav-links a {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--navy-light);
+  transition: color 0.2s;
+}
+.nav-links a:hover {
+  color: var(--orange);
+}
+
+.btn-nav {
+  background: var(--navy);
+  color: var(--white) !important;
+  padding: 10px 24px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.btn-nav:hover {
+  background: var(--orange);
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+  background: var(--navy);
+  color: var(--white);
+  padding: 110px 0;
+  text-align: center;
+}
+.hero-content {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.pill {
+  background: rgba(249, 115, 22, 0.15);
+  color: var(--orange);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-size: 3.75rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+}
+.highlight {
+  color: var(--orange);
+}
+
+.hero-sub {
+  font-size: 1.25rem;
+  color: #cbd5e1;
+  margin-bottom: 40px;
+  font-weight: 300;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-group {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.btn-primary {
+  background: var(--orange);
+  color: var(--white);
+  padding: 16px 32px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+.btn-primary:hover {
+  background: var(--orange-hover);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--white);
+  padding: 16px 32px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+.btn-secondary:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+/* --- GRID CARDS (Structural) --- */
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  color: var(--navy);
+}
+.bar {
+  width: 80px;
+  height: 4px;
+  background: var(--orange);
+  margin: 0 auto;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(360px, 1fr)
+  ); /* Wider cards for detailed content */
+  gap: 32px;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: #cbd5e1;
+}
+
+.card-top {
+  padding: 24px;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Phase Borders */
+.phase-1-border {
+  border-top: 5px solid #3b82f6;
+}
+.phase-2-border {
+  border-top: 5px solid var(--navy);
+}
+.phase-3-border {
+  border-top: 5px solid var(--orange);
+}
+
+.card-top h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+.badge {
+  font-size: 0.75rem;
+  background: #e2e8f0;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 700;
+  color: var(--navy-light);
+}
+
+.card-body {
+  padding: 32px;
+}
+
+/* Main List Items */
+.module-list > li {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.module-list > li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.module-list strong {
+  display: block;
+  color: var(--navy);
+  font-size: 1rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+/* Sub-lists for detailed topics (The new requirement) */
+.sub-list {
+  list-style: disc;
+  padding-left: 20px;
+}
+.sub-list li {
+  font-size: 0.9rem;
+  color: var(--slate);
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.featured-item {
+  background: #fff7ed;
+  margin: -10px -10px 20px -10px;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid var(--orange);
+}
+.featured-item strong {
+  color: #9a3412;
+}
+
+/* --- FOOTER --- */
+footer {
+  background: var(--navy);
+  color: var(--slate);
+  padding: 48px 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .mobile-toggle {
+    display: block;
+  }
+  .hero h1 {
+    font-size: 2.75rem;
+  }
+
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    padding: 24px;
+    box-shadow: var(--shadow-hover);
+  }
+}
