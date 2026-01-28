@@ -3,186 +3,357 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Learners Guru | Elite Data Engineering</title>
-    <link rel="stylesheet" href="learnersGuru.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
+    <meta
+      name="description"
+      content="Learners Guru - Premium educational platform for mastering coding, data science, and design."
     />
+    <title>Learners Guru - Aspire, Act, Achieve</title>
+    <link rel="stylesheet" href="learnersGuru.css" />
+    <link rel="icon" href="logo.jpeg" type="image/jpeg" />
   </head>
   <body>
-    <nav class="navbar">
-      <div class="container nav-wrapper">
-        <div class="brand">
-          <img src="logo.jpeg" alt="Logo" class="logo" />
-          <div class="brand-text">
-            <span class="company">LEARNERS GURU</span>
-            <span class="tagline">ASPIRE. ACT. ACHIEVE.</span>
-          </div>
+    <!-- ========== NAVBAR ========== -->
+    <header class="navbar" id="navbar">
+      <nav class="navbar__container">
+        <a href="#" class="navbar__brand">
+          <img src="logo.jpeg" alt="Learners Guru Logo" class="navbar__logo" />
+          <span class="navbar__title">Learners Guru</span>
+        </a>
+        <div class="navbar__links" id="nav-links">
+          <a href="#courses" class="navbar__link">Courses</a>
+          <a href="#placements" class="navbar__link">Placements</a>
+          <a href="#about" class="navbar__link">About</a>
+          <a href="#contact" class="navbar__link">Contact</a>
         </div>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#curriculum">Curriculum</a></li>
-          <li><a href="#fabric">Azure Fabric</a></li>
-          <li><a href="#projects">Realtime Projects</a></li>
-          <li><a href="#contact" class="btn-nav">Enroll Now</a></li>
-        </ul>
-        <button class="mobile-toggle" id="mobileBtn">☰</button>
-      </div>
-    </nav>
-
-    <header class="hero">
-      <div class="container hero-content">
-        <span class="pill">UPDATED FOR 2026</span>
-        <h1>
-          Data Engineering & <br /><span class="highlight"
-            >Cloud Architecture</span
+        <div class="navbar__actions">
+          <button
+            class="navbar__theme-toggle"
+            id="theme-toggle"
+            aria-label="Toggle theme"
           >
-        </h1>
-        <p class="hero-sub">
-          Master the complete pipeline: From
-          <strong>SQL Fundamentals</strong> to
-          <strong>Azure Fabric (OneLake)</strong>,
-          <strong>Stream Analytics</strong>, and
-          <strong>3 Real-time Industry Projects</strong>.
-        </p>
-        <div class="cta-group">
-          <a href="#curriculum" class="btn-primary">View Detailed Syllabus</a>
-          <a href="#projects" class="btn-secondary">See Projects</a>
+            <svg
+              class="icon icon--sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg
+              class="icon icon--moon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <button class="btn btn--secondary" id="login-btn">Login</button>
+          <button
+            class="navbar__hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
         </div>
+      </nav>
+      <div class="navbar__mobile" id="mobile-menu">
+        <a href="#courses" class="navbar__mobile-link">Courses</a>
+        <a href="#placements" class="navbar__mobile-link">Placements</a>
+        <a href="#about" class="navbar__mobile-link">About</a>
+        <a href="#contact" class="navbar__mobile-link">Contact</a>
+        <button class="btn btn--secondary btn--full" id="mobile-login-btn">
+          Login
+        </button>
       </div>
     </header>
 
-    <main id="curriculum" class="container section">
-      <div class="section-header">
-        <h2>Detailed Course Structure</h2>
-        <div class="bar"></div>
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">Aspire, Act, Achieve</h1>
+        <p class="hero__subtitle">
+          Unlock your potential with expert-led courses designed to transform
+          your learning journey. Join thousands of successful learners today.
+        </p>
+        <div class="hero__search">
+          <svg
+            class="hero__search-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+
+          <input
+            type="text"
+            class="hero__search-input"
+            id="search-input"
+            placeholder="Search for courses, topics, or instructors..."
+            autocomplete="off"
+          />
+        </div>
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <span class="hero__stat-number">50K+</span
+            ><span class="hero__stat-label">Active Learners</span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-number">200+</span
+            ><span class="hero__stat-label">Expert Courses</span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-number">95%</span
+            ><span class="hero__stat-label">Success Rate</span>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="grid-3">
-        <article class="card">
-          <div class="card-top phase-1-border">
-            <h3>Foundation & SQL Mastery</h3>
-            <span class="badge">Sessions 1-16</span>
-          </div>
-          <div class="card-body">
-            <ul class="module-list">
-              <li>
-                <strong>Big Data & Cloud (Ses 1-4)</strong>
-                <ul class="sub-list">
-                  <li>Structured vs Unstructured vs Semi-structured Data</li>
-                  <li>ETL Processing Flow & Architecture</li>
-                  <li>On-Premise vs Cloud Computing Challenges</li>
-                </ul>
-              </li>
-              <li>
-                <strong>SQL Core (Ses 5-9)</strong>
-                <ul class="sub-list">
-                  <li>SSMS Installation & Database Types</li>
-                  <li>DDL, DML, DCL, TCL Commands</li>
-                  <li>Aggregations (Sum, Min, Max, Count) & Group By</li>
-                </ul>
-              </li>
-              <li>
-                <strong>Advanced SQL (Ses 10-16)</strong>
-                <ul class="sub-list">
-                  <li>
-                    <strong>Joins Mastery:</strong> Inner, Left, Right, Full,
-                    Self, & Cross
-                  </li>
-                  <li>
-                    <strong>SubQueries:</strong> Nested, Correlated & Single Row
-                  </li>
-                  <li>
-                    <strong>CTE:</strong> Common Table Expressions & Realtime
-                    Scenarios
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card" id="fabric">
-          <div class="card-top phase-2-border">
-            <h3>Azure Ecosystem</h3>
-            <span class="badge">Sessions 67-73</span>
-          </div>
-          <div class="card-body">
-            <ul class="module-list">
-              <li>
-                <strong>Azure DevOps (Ses 67)</strong>
-                <ul class="sub-list">
-                  <li>Setup CI/CD Process</li>
-                  <li>Industry Standards for Pull Requests (PR)</li>
-                </ul>
-              </li>
-              <li>
-                <strong>Stream Analytics (Ses 68-69)</strong>
-                <ul class="sub-list">
-                  <li>Read Stream & Micro-batches</li>
-                  <li>Auto Loader Implementation</li>
-                  <li>Schema Enforcement & Evolution</li>
-                </ul>
-              </li>
-              <li class="featured-item">
-                <strong>Azure Fabric (Ses 72-73)</strong>
-                <ul class="sub-list">
-                  <li>OneLake & Lakehouse Architecture</li>
-                  <li>Connecting Azure Data Lake to Fabric</li>
-                  <li>Creating Shortcuts & Git on Fabric</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card" id="projects">
-          <div class="card-top phase-3-border">
-            <h3>Realtime Projects</h3>
-            <span class="badge">Sessions 74-76</span>
-          </div>
-          <div class="card-body">
-            <ul class="module-list">
-              <li>
-                <strong>Project 1: Vehicle Tracking (Ses 70-71)</strong>
-                <ul class="sub-list">
-                  <li>Data Ingestion to Gold Layer</li>
-                  <li>Workflow Creation & Job Monitoring</li>
-                  <li>Triggers & Data Transformation</li>
-                </ul>
-              </li>
-              <li>
-                <strong>Domain Projects (Ses 74)</strong>
-                <ul class="sub-list">
-                  <li>
-                    <strong>Healthcare Domain:</strong> End-to-End Pipeline
-                  </li>
-                  <li><strong>Retail Domain:</strong> End-to-End Pipeline</li>
-                  <li>Answering Tough Scenario-based Questions</li>
-                </ul>
-              </li>
-              <li>
-                <strong>Career & Final Prep (Ses 75-76)</strong>
-                <ul class="sub-list">
-                  <li>
-                    <strong>Single Stack Solution:</strong> Realtime Design Deck
-                    (PPT)
-                  </li>
-                  <li>Client Presentation Flow</li>
-                  <li>Resume Tips & Mock Interviews</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </article>
+    <!-- ========== COURSES ========== -->
+    <section class="courses" id="courses">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-header__title">Featured Courses</h2>
+          <p class="section-header__subtitle">
+            Master in-demand skills with our comprehensive, project-based
+            courses
+          </p>
+          <div class="section-header__divider"></div>
+        </div>
+        <div class="courses__grid" id="courses-grid"></div>
+        <div class="courses__empty" id="no-results">
+          <svg
+            class="courses__empty-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <h3>No courses found</h3>
+          <p>Try adjusting your search terms</p>
+        </div>
       </div>
-    </main>
+    </section>
 
-    <footer>
-      <div class="container footer-content">
-        <p>&copy; 2026 Learners Guru. All Rights Reserved.</p>
+    <!-- ========== PLACEMENTS ========== -->
+    <section class="placements" id="placements">
+      <div class="container">
+        <div class="section-header section-header--light">
+          <h2 class="section-header__title">Our Students Got Placement at</h2>
+          <div class="section-header__divider"></div>
+        </div>
+        <div class="placements__grid" id="placements-grid"></div>
+        <div class="placements__stats">
+          <div class="placements__stat">
+            <span class="placements__stat-value">500+</span
+            ><span class="placements__stat-label">Companies Hiring</span>
+          </div>
+          <div class="placements__stat">
+            <span class="placements__stat-value">10,000+</span
+            ><span class="placements__stat-label">Students Placed</span>
+          </div>
+          <div class="placements__stat">
+            <span class="placements__stat-value">₹12 LPA</span
+            ><span class="placements__stat-label">Average Package</span>
+          </div>
+          <div class="placements__stat">
+            <span class="placements__stat-value">95%</span
+            ><span class="placements__stat-label">Placement Rate</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="about" id="about">
+      <div class="container">
+        <h2 class="section-header__title">Why Choose Learners Guru?</h2>
+        <div class="about__features">
+          <div class="about__feature">
+            <div class="about__feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+            </div>
+            <h3>Expert Instructors</h3>
+            <p>
+              Learn from industry professionals with years of real-world
+              experience
+            </p>
+          </div>
+          <div class="about__feature">
+            <div class="about__feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3>Project-Based Learning</h3>
+            <p>Build real-world projects for your portfolio</p>
+          </div>
+          <div class="about__feature">
+            <div class="about__feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <h3>Placement Support</h3>
+            <p>Get dedicated placement assistance with top companies</p>
+          </div>
+          <div class="about__feature">
+            <div class="about__feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h3>Lifetime Access</h3>
+            <p>Access course materials anytime, anywhere, forever</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <div class="footer__brand-header">
+              <img src="logo.jpeg" alt="Learners Guru" class="footer__logo" />
+              <span class="footer__brand-name">Learners Guru</span>
+            </div>
+            <p class="footer__brand-text">
+              Empowering learners across India with quality education and
+              practical skills.
+            </p>
+          </div>
+          <div class="footer__column">
+            <h4 class="footer__column-title">Company</h4>
+            <a href="#about" class="footer__link">About Us</a>
+            <a href="#" class="footer__link">Careers</a>
+            <a href="#" class="footer__link">Blog</a>
+          </div>
+          <div class="footer__column">
+            <h4 class="footer__column-title">Resources</h4>
+            <a href="#courses" class="footer__link">Courses</a>
+            <a href="#" class="footer__link">Help Center</a>
+            <a href="#" class="footer__link">Community</a>
+          </div>
+          <div class="footer__column">
+            <h4 class="footer__column-title">Legal</h4>
+            <a href="#" class="footer__link">Privacy Policy</a>
+            <a href="#" class="footer__link">Terms of Service</a>
+            <a href="#" class="footer__link">Refund Policy</a>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; 2026 Learners Guru. Aspire, Act, Achieve.</p>
+        </div>
       </div>
     </footer>
+
+    <!-- ========== LOGIN MODAL ========== -->
+    <div class="modal" id="login-modal">
+      <div class="modal__backdrop" id="modal-backdrop"></div>
+      <div class="modal__container">
+        <button class="modal__close" id="modal-close" aria-label="Close">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <div class="modal__header">
+          <img src="logo.jpeg" alt="Learners Guru" class="modal__logo" />
+          <h2 class="modal__title">Welcome Back!</h2>
+          <p class="modal__subtitle">
+            Sign in to continue your learning journey
+          </p>
+        </div>
+        <form class="modal__form" id="login-form">
+          <div class="form-group">
+            <label class="form-group__label" for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              class="form-group__input"
+              placeholder="Enter your email"
+              required
+            />
+            <span class="form-group__error" id="email-error"></span>
+          </div>
+          <div class="form-group">
+            <label class="form-group__label" for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              class="form-group__input"
+              placeholder="Enter your password"
+              required
+            />
+            <span class="form-group__error" id="password-error"></span>
+          </div>
+          <button
+            type="submit"
+            class="btn btn--primary btn--full"
+            id="submit-btn"
+          >
+            <span class="btn__text">Sign In</span>
+            <span class="btn__loader"></span>
+          </button>
+        </form>
+        <p class="modal__footer">
+          Don't have an account?
+          <a href="#" class="modal__footer-link">Sign up for free</a>
+        </p>
+      </div>
+    </div>
 
     <script src="learnersGuru.js" defer></script>
   </body>
