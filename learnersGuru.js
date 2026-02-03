@@ -13,7 +13,6 @@ class PasswordValidator {
         complexity: { weight: 20, message: "Avoid common patterns" },
       },
     };
-    // will find either id="pwd" or id="password"
     this.init();
   }
 
@@ -34,7 +33,6 @@ class PasswordValidator {
       passwordInput.nextSibling,
     );
 
-    // call an initial display update if there's an existing value
     if (passwordInput.value) {
       this.validatePasswordStrength(
         passwordInput.value,
@@ -65,7 +63,6 @@ class PasswordValidator {
       }
     });
 
-    // Expose container for external use if needed
     this.container = passwordStrengthContainer;
   }
 
@@ -115,7 +112,7 @@ class PasswordValidator {
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
       animation: shimmer 2s infinite;
     `;
-    // small keyframes injection for shimmer if not present
+
     if (!document.getElementById("password-validator-shimmer-styles")) {
       const s = document.createElement("style");
       s.id = "password-validator-shimmer-styles";
@@ -174,7 +171,6 @@ class PasswordValidator {
     let totalScore = 0;
     const results = {};
 
-    // Length check (scales up to weight)
     const lengthScore = Math.min(
       (password.length / 12) * requirements.length.weight,
       requirements.length.weight,
@@ -182,7 +178,6 @@ class PasswordValidator {
     results.length = password.length >= this.passwordStrengthConfig.minLength;
     totalScore += lengthScore;
 
-    // Character checks
     results.lowercase = /[a-z]/.test(password);
     if (results.lowercase) totalScore += requirements.lowercase.weight;
 
@@ -205,9 +200,8 @@ class PasswordValidator {
     return { results, score: Math.min(totalScore, 100) };
   }
 
-  // Exposed method for the app to analyze password programmatically
   analyzePassword(password = "") {
-    // create a temporary container if none (we just need results and score)
+
     return this.validatePasswordStrength(
       password,
       this.container || { querySelector: () => null, children: [] },
@@ -226,12 +220,11 @@ class PasswordValidator {
     if (/[0-9]/.test(password) && /[a-zA-Z]/.test(password)) complexity += 0.2;
     if (password.length >= 12) complexity += 0.3;
 
-    // base bias so weak passwords aren't 0
     return Math.max(0, Math.min(1, complexity + 0.7));
   }
 
   updatePasswordDisplay(container, results, score, password) {
-    // container might be missing in programmatic analyze; guard
+
     if (!container) return;
 
     const strengthBar = container.querySelector("div > div");
@@ -269,7 +262,7 @@ class PasswordValidator {
     rules.forEach((rule) => {
       const isValid = results[rule.dataset.rule];
       rule.style.color = isValid ? "#2ed573" : "#666";
-      // Toggle check/empty circle safely
+
       if (isValid) {
         rule.innerHTML = rule.innerHTML.replace("○", "✓");
       } else {
@@ -304,13 +297,10 @@ class PasswordValidator {
   }
 }
 
-/* ============================
-   Learners Guru App (IIFE)
-   ============================ */
+
 (function () {
   "use strict";
 
-  // ========= make validator variable accessible in this scope =========
   let passwordValidator = null;
   const companies = [
     {
@@ -457,7 +447,7 @@ class PasswordValidator {
       name: "Airbnb",
       logo: "logos/airbnb.svg",
     },
-    // New / Updated Companies — using Wikipedia URLs since you don’t have local ones
+    // New / Updated Companies — using Wikipedia URLs
     {
       name: "Apple",
       logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
@@ -476,7 +466,7 @@ class PasswordValidator {
     },
   ];
 
-  // ========== COURSES DATA ==========
+  //  COURSES DATA 
   const courses = [
     {
       id: "1",
@@ -617,7 +607,7 @@ class PasswordValidator {
       projects: 10,
     },
 
-    // --- INTERMEDIATE COURSES (7-13) ---
+
     {
       id: "7",
       title: "Mastering Java: From Core to Spring Boot",
@@ -780,7 +770,7 @@ class PasswordValidator {
       projects: 7,
     },
 
-    // --- UPDATED COURSES (LOGOS FIXED) ---
+
     {
       id: "14",
       title: "Flutter & Dart: The Complete Guide",
@@ -828,7 +818,6 @@ class PasswordValidator {
       projects: 10,
     },
     {
-      // --- UPDATED & FIXED IMAGE FOR IOS ---
       id: "16",
       title: "iOS 17 & Swift 5: App Development Bootcamp",
       description:
@@ -852,7 +841,6 @@ class PasswordValidator {
       projects: 20,
     },
     {
-      // --- UPDATED & FIXED IMAGE FOR UNITY ---
       id: "17",
       title: "Unity Game Development with C#",
       description:
@@ -969,7 +957,6 @@ class PasswordValidator {
     DOM.modalClose = document.getElementById("modal-close");
   };
 
-  // ========== UTILITIES ==========
   const formatNumber = (num) =>
     num >= 1000
       ? (num / 1000).toFixed(num >= 10000 ? 0 : 1) + "K"
@@ -1084,7 +1071,6 @@ class PasswordValidator {
       .join("");
   };
 
-  // ========== RENDER PLACEMENTS ==========
   const renderPlacements = () => {
     if (!DOM.placementsGrid) return;
 
@@ -1106,7 +1092,6 @@ class PasswordValidator {
       .join("");
   };
 
-  // ========== SEARCH ==========
   const handleSearch = (query) => {
     const normalizedQuery = query.trim().toLowerCase();
 
@@ -1126,7 +1111,6 @@ class PasswordValidator {
 
   const debouncedSearch = debounce(handleSearch, 150);
 
-  // ========== THEME ==========
   const initTheme = () => {
     const saved = localStorage.getItem("theme");
     const prefersDark = window.matchMedia(
@@ -1142,7 +1126,6 @@ class PasswordValidator {
     localStorage.setItem("theme", isDark ? "dark" : "light");
   };
 
-  // ========== MOBILE MENU ==========
   const toggleMobileMenu = () => {
     DOM.mobileMenu?.classList.toggle("navbar__mobile--open");
   };
@@ -1151,7 +1134,6 @@ class PasswordValidator {
     DOM.mobileMenu?.classList.remove("navbar__mobile--open");
   };
 
-  // ========== MODAL ==========
   const openModal = () => {
     DOM.loginModal?.classList.add("modal--open");
     document.body.style.overflow = "hidden";
@@ -1173,14 +1155,12 @@ class PasswordValidator {
     DOM.submitBtn?.classList.remove("btn--loading");
     if (DOM.submitBtn) DOM.submitBtn.disabled = false;
 
-    // Reset password strength UI visibility if validator exists
     if (passwordValidator && passwordValidator.container) {
       passwordValidator.container.style.opacity = "0";
       passwordValidator.container.style.transform = "translateY(-10px)";
     }
   };
 
-  // ========== VALIDATION (enhanced using PasswordValidator) ==========
   const validateForm = (email, password) => {
     const errors = { email: "", password: "" };
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1194,18 +1174,16 @@ class PasswordValidator {
     } else if (password.length < 8) {
       errors.password = "Password must be at least 8 characters";
     } else {
-      // If we have the password validator, analyze password for stronger checks and friendly suggestions
+
       if (passwordValidator) {
         const analysis = passwordValidator.analyzePassword(password);
         const { results, score } = analysis;
-        // Gather missing rules
         const missing = [];
         if (!results.lowercase) missing.push("lowercase");
         if (!results.uppercase) missing.push("uppercase");
         if (!results.number) missing.push("number");
         if (!results.special) missing.push("special character");
         if (!results.length) missing.push("length (8+)");
-        // Require a fair minimum score (50) for acceptance
         if (score < 50) {
           if (missing.length) {
             errors.password =
@@ -1216,7 +1194,6 @@ class PasswordValidator {
           }
         }
       } else {
-        // fallback smaller rule if validator missing
         if (password.length < 6)
           errors.password = "Password must be at least 6 characters";
       }
@@ -1253,13 +1230,11 @@ class PasswordValidator {
       DOM.submitBtn.disabled = true;
     }
 
-    // simulate network
     await new Promise((resolve) => setTimeout(resolve, 1500));
     alert(`Welcome back! You're now signed in as ${email}`);
     closeModal();
   };
 
-  // ========== EVENT DELEGATION ==========
   const initEventDelegation = () => {
     DOM.coursesGrid?.addEventListener("click", (e) => {
       const toggleBtn = e.target.closest(".card__topics-toggle");
@@ -1287,12 +1262,10 @@ class PasswordValidator {
     });
   };
 
-  // ========== SCROLL ==========
   const handleScroll = () => {
     DOM.navbar?.classList.toggle("navbar--scrolled", window.scrollY > 20);
   };
 
-  // ========== BIND EVENTS ==========
   const bindEvents = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     DOM.searchInput?.addEventListener("input", (e) =>
@@ -1329,7 +1302,7 @@ class PasswordValidator {
     DOM.passwordInput?.addEventListener("input", () => {
       if (DOM.passwordError) DOM.passwordError.textContent = "";
       DOM.passwordInput?.classList.remove("form-group__input--error");
-      // Make sure the password strength container shows when typing
+
       if (passwordValidator && passwordValidator.container) {
         passwordValidator.container.style.opacity = "1";
         passwordValidator.container.style.transform = "translateY(0)";
@@ -1337,12 +1310,10 @@ class PasswordValidator {
     });
   };
 
-  // ========== INIT ==========
   const init = () => {
     initTheme();
     cacheDOM();
 
-    // instantiate password validator after DOM elements cached
     passwordValidator = new PasswordValidator();
 
     renderCourses(courses);
@@ -1358,4 +1329,5 @@ class PasswordValidator {
     init();
   }
 })();
+
 
