@@ -90,6 +90,21 @@ button {
   background: none;
 }
 
+.hero__developer {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  opacity: 0.9;
+  letter-spacing: 1px;
+}
+
+.hero__developer span {
+  font-weight: bold;
+  color: #ffca28; 
+  text-transform: uppercase;
+}
+
 .navbar {
   position: fixed;
   top: 0;
@@ -1246,4 +1261,5 @@ button {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+
 
